@@ -28,5 +28,12 @@ public class Test {
             e.printStackTrace();
         }
 
+
+        //获取基本数据类型对象
+        Class<Integer> integerClass = int.class;
+        System.out.println(integerClass.getName());
+        //没有父类，所以输出为null或者NullPointException
+        System.out.println(integerClass.getSuperclass());
+
     }
 }
