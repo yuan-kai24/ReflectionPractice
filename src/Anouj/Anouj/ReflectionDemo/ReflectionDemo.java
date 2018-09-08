@@ -1,6 +1,8 @@
 package Anouj.Anouj.ReflectionDemo;
 
+import java.io.File;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -36,7 +38,7 @@ public class ReflectionDemo {
             Method [] methods = classType.getDeclaredMethods();
             for (Method method1:methods)
             {
-                System.out.println(method1.getName());
+                System.out.println(method1.getModifiers()+ " " + method1.getReturnType() + " " + method1.getName());
             }
             System.out.println("------------------------------------------");
 
@@ -45,16 +47,34 @@ public class ReflectionDemo {
             System.out.println(tos);
             System.out.println("------------------------------------------");
 
+            //调用私有方法
+            Method method1 = classType.getDeclaredMethod("work", new Class[]{});
+            System.out.println(method1.getName() + "的调用");
+            method1.setAccessible(true);
+            method1.invoke(em3, new Object[]{});
+            System.out.println("------------------------------------------");
+
+            //获取所有属性---并更改私有属性
+            Field field = classType.getDeclaredField("name");
+            field.setAccessible(true);
+            field.set(em3, "嘿嘿");
+            System.out.println(field.getName()+ "更改为" + field.get(em3));
+            method1.invoke(em3 , new Object[]{});
+            System.out.println("------------------------------------------");
+
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e)
         {
             e.getStackTrace();
-        } catch (InstantiationException e) {
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }catch (InstantiationException e) {
             e.printStackTrace();
         }catch (InvocationTargetException e) {
             e.printStackTrace();
-        }catch (NoSuchMethodException e) {
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
     }

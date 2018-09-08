@@ -30,6 +30,21 @@ public class Employee {
         return age;
     }
 
+    private void work()
+    {
+        System.out.println(name + "在" + age + "岁时" + "正在工作！");
+    }
+
+    protected void ptd()
+    {
+        System.out.println("。。。。");
+    }
+
+    void defalut()
+    {
+        System.out.println("默认修饰符");
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
