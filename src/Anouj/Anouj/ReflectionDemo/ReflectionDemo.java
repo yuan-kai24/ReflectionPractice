@@ -32,7 +32,18 @@ public class ReflectionDemo {
             System.out.println(method.getName());
             System.out.println("------------------------------------------");
 
+            //获取所有的方法，包括私有
+            Method [] methods = classType.getDeclaredMethods();
+            for (Method method1:methods)
+            {
+                System.out.println(method1.getName());
+            }
+            System.out.println("------------------------------------------");
+
             //方法的调用
+            String tos = (String) method.invoke(em3, new Object[]{});
+            System.out.println(tos);
+            System.out.println("------------------------------------------");
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
