@@ -1,9 +1,16 @@
 package Anouj;
 
-import java.util.Properties;
 
 public class Test {
     public static void main(String[] args) {
+
+    }
+
+
+
+
+    private void fsInfo()
+    {
         //getclass方式
         Employee employee = new Employee(1, "yuankai");
         Class<?> aClass = employee.getClass();
@@ -47,8 +54,5 @@ public class Test {
         Class<Double> doubleClass = Double.class;
         System.out.println("Double_Class:" + doubleClass.getName());
         System.out.println("Double_Class:" + doubleClass.getSuperclass());
-
-
-
     }
 }
